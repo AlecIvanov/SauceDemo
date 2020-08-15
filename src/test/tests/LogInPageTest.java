@@ -2,17 +2,24 @@ package tests;
 
 import base.BaseTest;
 import org.testng.Assert;
+import org.testng.ITestResult;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
+import pages.HomePage;
 import pages.LogInPage;
+
+import java.lang.reflect.Method;
+import java.util.HashMap;
 
 public class LogInPageTest extends BaseTest {
     LogInPage logInPage;
+    HomePage homePage;
 
     @BeforeMethod(alwaysRun = true)
-    public void setUp(){
-        super.setUp();
+    public void setUp(Method method, ITestResult result){
+        super.setUp(method, result);
         logInPage = new LogInPage(getDriver());
+        homePage = new HomePage(getDriver());
     }
 
     @Test
@@ -25,7 +32,7 @@ public class LogInPageTest extends BaseTest {
     @Test
     public void veryfyLogInStandardUser(){
         logInPage.logIn("standard");
-        Assert.assertEquals(getDriver().getCurrentUrl(), "https://www.sausedemo.com/inventory.html");
+        Assert.assertEquals(getDriver().getCurrentUrl(), "https://www.saucedemo.com/inventory.html");
     }
     @Test
     public void verifyLockedUser(){

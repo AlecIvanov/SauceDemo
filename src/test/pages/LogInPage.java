@@ -28,7 +28,7 @@ public class LogInPage extends BasePage {
 
     public void logIn(String userType){
         String username = "";
-        String password = "";
+        String password = "secret_sauce";
 
         switch (userType){
             case "standard":
